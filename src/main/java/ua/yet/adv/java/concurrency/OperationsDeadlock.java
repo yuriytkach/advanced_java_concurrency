@@ -7,7 +7,7 @@ package ua.yet.adv.java.concurrency;
  */
 public class OperationsDeadlock {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 
 		final Account a = new Account(1, 1000);
 		final Account b = new Account(2, 2000);
@@ -23,8 +23,12 @@ public class OperationsDeadlock {
 		t1.start();
 		t2.start();
 
-		t1.join();
-		t2.join();
+		try {
+			t1.join();
+			t2.join();
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+		}
 
 		outputAmount(a);
 		outputAmount(b);
