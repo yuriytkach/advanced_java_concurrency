@@ -103,6 +103,6 @@
 	</dependencies>
 	<issueManagement>
 		<system>GIT</system>
-		<url>https://github.com/yuriytkach/advanced_java_generics/issues</url>
+		<url>https://github.com/yuriytkach/advanced_java_concurrency/issues</url>
 	</issueManagement>
 </project>
