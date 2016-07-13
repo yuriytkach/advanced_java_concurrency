@@ -14,6 +14,8 @@ public class SimpleTransfer implements Callable<Boolean> {
     private static final AtomicInteger idGenerator = new AtomicInteger(1);
 
     private static final int LOCK_WAIT_SEC = 5;
+    
+    private static final int MAX_TRANSFER_SEC = 7;
 
     private final int id;
 
@@ -36,6 +38,7 @@ public class SimpleTransfer implements Callable<Boolean> {
         if (accFrom.getLock().tryLock(LOCK_WAIT_SEC, TimeUnit.SECONDS)) {
             try {
                 if (accFrom.getBalance() < amount) {
+                    accFrom.incFailedTransferCount();
                     throw new IllegalStateException("Insufficient funds in Account " + accFrom.getId());
                 }
 
@@ -45,7 +48,7 @@ public class SimpleTransfer implements Callable<Boolean> {
                         accFrom.withdraw(amount);
                         accTo.deposit(amount);
 
-                        Thread.sleep(waitRandom.nextInt(2000));
+                        Thread.sleep(waitRandom.nextInt(MAX_TRANSFER_SEC*1000));
 
                         System.out.println("[" + id + "] " + "Transfer " + amount + " done from " + accFrom.getId()
                                 + " to " + accTo.getId());
@@ -66,6 +69,10 @@ public class SimpleTransfer implements Callable<Boolean> {
             accFrom.incFailedTransferCount();
             return false;
         }
+    }
+
+    public int getId() {
+        return id;
     }
 
 }
