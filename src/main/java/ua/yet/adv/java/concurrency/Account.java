@@ -1,10 +1,14 @@
 package ua.yet.adv.java.concurrency;
 
+import java.util.concurrent.atomic.LongAdder;
+
 public class Account {
 	
 	private final int id;
 	
 	private int balance;
+	
+	private final LongAdder failCounter = new LongAdder();
 
 	public Account(int accountId, int initialBalance) {
 		this.id = accountId;
@@ -19,6 +23,10 @@ public class Account {
 		balance -= amount;
 	}
 	
+	public void incFailedTransferCount() {
+	    failCounter.increment();
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -26,5 +34,11 @@ public class Account {
 	public int getBalance() {
 		return balance;
 	}
+
+    public long getFailCount() {
+        return failCounter.sum();
+    }
+	
+	
 
 }

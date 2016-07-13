@@ -16,5 +16,17 @@ public class TestAccount {
 		acc.withdraw(100);
 		assertEquals(1400, acc.getBalance());
 	}
+	
+	public void testIncFailedTransferCount() {
+	    Account acc = new Account(1, 1);
+	    assertEquals(0, acc.getFailCount());
+	    
+	    acc.incFailedTransferCount();
+	    assertEquals(1, acc.getFailCount());
+	    
+	    acc.incFailedTransferCount();
+	    acc.incFailedTransferCount();
+	    assertEquals(3, acc.getFailCount());
+	}
 
 }
