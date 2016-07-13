@@ -14,8 +14,8 @@ import ua.yet.adv.java.concurrency.transfers.SimpleTransfer;
 
 /**
  * Showcase for using ExecutorService to start threads in fixed thread pool. In
- * addition to that a scheduled thread is started every 2 secs to poll for
- * successful transfers.
+ * addition to that a scheduled thread is started every 3 secs to poll for
+ * unsuccessful transfers.
  * 
  * @author yuriy
  */
