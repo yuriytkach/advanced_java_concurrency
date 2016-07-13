@@ -7,3 +7,4 @@ The code has some unit tests that validate the logic.
 
 There are also some classes with `main` function in them that output information to console. You can call them in the following way:
 - `mvn exec:java -Dexec.mainClass="ua.yet.adv.java.concurrency.OperationsDeadlock"`
+- `mvn exec:java -Dexec.mainClass="ua.yet.adv.java.concurrency.OperationsService"`
