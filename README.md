@@ -10,3 +10,4 @@ There are also some classes with `main` function in them that output information
 - `mvn exec:java -Dexec.mainClass="ua.yet.adv.java.concurrency.OperationsService"`
 - `mvn exec:java -Dexec.mainClass="ua.yet.adv.java.concurrency.OperationsCompletableFuture"`
 - `mvn exec:java -Dexec.mainClass="ua.yet.adv.java.concurrency.OperationsSemaphore"`
+- `mvn exec:java -Dexec.mainClass="ua.yet.adv.java.concurrency.OperationsSynchronizers"`
