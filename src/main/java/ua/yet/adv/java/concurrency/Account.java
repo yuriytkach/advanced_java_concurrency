@@ -1,6 +1,8 @@
 package ua.yet.adv.java.concurrency;
 
 import java.util.concurrent.atomic.LongAdder;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Account {
 	
@@ -9,6 +11,8 @@ public class Account {
 	private int balance;
 	
 	private final LongAdder failCounter = new LongAdder();
+	
+	private final Lock lock = new ReentrantLock();
 
 	public Account(int accountId, int initialBalance) {
 		this.id = accountId;
@@ -38,7 +42,9 @@ public class Account {
     public long getFailCount() {
         return failCounter.sum();
     }
-	
-	
+
+    public Lock getLock() {
+        return lock;
+    }
 
 }
