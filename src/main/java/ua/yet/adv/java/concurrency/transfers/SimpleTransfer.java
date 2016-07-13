@@ -75,4 +75,13 @@ public class SimpleTransfer implements Callable<Boolean> {
         return id;
     }
 
+	public Boolean perform() {
+		System.out.println("Performing transfer. Thread " + Thread.currentThread().getId());
+		try {
+			return call();
+		} catch (Exception e) {
+			throw new IllegalStateException(e.getMessage());
+		}
+	}
+
 }
